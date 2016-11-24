@@ -33,4 +33,16 @@ public class MyService extends Service {
         // TODO: Return the communication channel to the service.
         throw new UnsupportedOperationException("Not yet implemented");
     }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Toast.makeText(this,"service is stopping", Toast.LENGTH_SHORT).show();
+        /*
+        WARNING: if another android component (ex. a system service) has a reference or is sending Intents to this service
+        it won't actually be stopped.
+        MAKE SURE you deregister with System Serices (here) ex. AlarmManager, LocationManager
+        (if oyu have broadcast receiver deregister them too.)
+         */
+    }
 }
